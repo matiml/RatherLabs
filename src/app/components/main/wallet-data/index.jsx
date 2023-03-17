@@ -6,10 +6,10 @@ import { connector } from '../../../config/web3';
 import { useCallback, useEffect, useState } from 'react';
 import useTruncatedAddress from '../../../../hooks/useTruncatedAddress';
 
+
 const WalletData = ({ onOpen }) => {
   const [balance, setBalance] = useState(0);
   const { active, activate, deactivate, account, error, library } = useWeb3React();
-
   const isUnsupportedChain = error instanceof UnsupportedChainIdError;
 
   const connect = useCallback(async () => {
@@ -31,7 +31,7 @@ const WalletData = ({ onOpen }) => {
 
   const getBalance = useCallback(async () => {
     const toSet = await library.eth.getBalance(account);
-    //enviar account a base de datos
+    
 
     setBalance((toSet / 1e18).toFixed(2));
   }, [library?.eth, account]);

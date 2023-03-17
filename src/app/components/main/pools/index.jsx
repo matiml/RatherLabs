@@ -43,7 +43,7 @@ const Pools = ({ token }) => {
           setSupliyed((result[0] / 1e18).toFixed(2));
         }
         setSupliyed(result[0]);
-        // console.log(result[0]);
+       
       }
     }
   }, [AaveDataProvider]);
@@ -56,7 +56,7 @@ const Pools = ({ token }) => {
           setBalance((unit / 1e18).toFixed(2));
         }
         setBalance(unit);
-        // console.log(unit);
+        
       }
     }
   }, [WalletBalance]);

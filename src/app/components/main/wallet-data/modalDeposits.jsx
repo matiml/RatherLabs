@@ -2,16 +2,17 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,
 import { useWeb3React } from '@web3-react/core';
 import { useEffect, useState } from 'react';
 
+
 function ModalDeposits({ onClose, isOpen }) {
   const { active, account } = useWeb3React();
   const [deposits, setDeposits] = useState();
-
+ 
   const fetchDeposits = async () => {
     try {
       const response = await fetch(`http://localhost:3005/deposits/${account}`);
       const data = await response.json();
       setDeposits(data);
-      console.log(data);
+    
     } catch (error) {
       console.error(error);
     }
@@ -30,7 +31,7 @@ function ModalDeposits({ onClose, isOpen }) {
           <ModalCloseButton />
           <ModalBody>
             <List spacing={3}>
-              {isOpen &&
+              {(isOpen  && deposits) &&
                 deposits.map((deposit) => (
                   <ListItem key={deposit.id}>
                     <ListIcon as={MdCheckCircle} color="green.500" />

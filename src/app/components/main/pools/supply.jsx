@@ -6,15 +6,16 @@ import usePoolAave from '@/hooks/usePoolAave';
 import { useWeb3React } from '@web3-react/core';
 import { useToast } from '@chakra-ui/react';
 
+
 const Supply = ({ address }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const pool = usePoolAave();
   const { active, account } = useWeb3React();
   const toast = useToast();
-  const url = process.env.SERVER_URL;
+  
 
   const handleSupply = async (monto) => {
-    console.log('supply', monto);
+   
     if (active) {
       const result = await pool.methods
         .supply(address, monto, account, '0')
@@ -27,7 +28,7 @@ const Supply = ({ address }) => {
           });
         })
         .on('receipt', async (txHash) => {
-          const rta = await fetch(`${url}/`, {
+          const rta = await fetch(`http://localhost:3005/deposits`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

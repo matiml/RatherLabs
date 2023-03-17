@@ -9,11 +9,11 @@ const ModalForm = ({ isOpen, onClose, tittle, onSupply, onWithdraw }) => {
 
   const handleSubmit = (amount) => {
     setAmount(amount);
-    console.log('antes', amount);
+    
   };
 
   const handleClick = (amount) => {
-    console.log('handleclick', amount);
+    
     tittle == 'Supply' ? onSupply(amount) : onWithdraw(amount);
     onClose();
   };

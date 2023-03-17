@@ -11,16 +11,16 @@ const APY = ({ address }) => {
 
   const getData = async (address) => {
     if (pool && active) {
-      // console.log(address)
+      
       const result = await pool.methods.getReserveData(address).call();
-      //   console.log(result);
+      
       const { depositAPY } = calculateAPY(result[3], result[5]);
       setApy(depositAPY);
     }
   };
 
   useEffect(() => {
-    // console.log(address)
+    
     getData(address);
   }, [active]);
   return <Td>{Apy && Apy}</Td>;
