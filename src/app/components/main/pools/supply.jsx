@@ -28,7 +28,7 @@ const Supply = ({ address }) => {
           });
         })
         .on('receipt', async (txHash) => {
-          const rta = await fetch(`http://localhost:3005/deposits`, {
+          const rta = await fetch(`https://ratherlabsserver-production.up.railway.app/deposits`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
