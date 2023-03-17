@@ -1,9 +1,8 @@
-import { useMemo } from "react";
-import { useWeb3React } from "@web3-react/core";
-import AaveOracleContact from "@/app/config/web3/artifacts/AaveOracle";
+import { useMemo } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import AaveOracleContact from '@/app/config/web3/artifacts/AaveOracle';
 
-
-const{address,abi}=AaveOracleContact;
+const { address, abi } = AaveOracleContact;
 
 const useAaveOracle = () => {
   const { active, library, chainId } = useWeb3React();

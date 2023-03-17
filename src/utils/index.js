@@ -1,11 +1,17 @@
-import useAaveOracle from '@/hooks/useAaveOracle';
+const calculateAPY = (liquidityRate, variableBorrowRate) => {
+  const RAY = 10 ** 27;
+  const SECONDS_PER_YEAR = 31536000;
 
-const getPriceAsset = async (address) => {
-  const oracle = useAaveOracle();
 
-  if (oracle) {
-    const result = await oracle.methods.getUserReserveData(address).call();
+  let depositAPR = liquidityRate / RAY;
+  let variableBorrowAPR = variableBorrowRate / RAY;
+  let stableBorrowAPR = variableBorrowRate / RAY;
 
-    return result;
-  }
+  let depositAPY = (1 + depositAPR / SECONDS_PER_YEAR) ** SECONDS_PER_YEAR - 1;
+  let variableBorrowAPY = (1 + variableBorrowAPR / SECONDS_PER_YEAR) ** SECONDS_PER_YEAR - 1;
+  let stableBorrowAPY = (1 + stableBorrowAPR / SECONDS_PER_YEAR) ** SECONDS_PER_YEAR - 1;
+
+  return { depositAPY, variableBorrowAPY, stableBorrowAPY };
 };
+
+export default calculateAPY;

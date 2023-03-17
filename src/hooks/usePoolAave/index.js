@@ -1,9 +1,8 @@
-import { useMemo } from "react";
-import { useWeb3React } from "@web3-react/core";
-import poolAaveContract from "@/app/config/web3/artifacts/pool";
+import { useMemo } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import poolAaveContract from '@/app/config/web3/artifacts/pool';
 
-
-const{address,abi}=poolAaveContract;
+const { address, abi } = poolAaveContract;
 
 const usePoolAave = () => {
   const { active, library, chainId } = useWeb3React();

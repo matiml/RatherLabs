@@ -6,7 +6,7 @@ import { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import useAaveProtocolDataProvider from '@/hooks/useAaveProtocolDataProvider';
 import Pools from '../pools';
-
+import AlertWallet from './alert';
 
 const TableData = () => {
   const [assets, setAssets] = useState();
@@ -19,7 +19,6 @@ const TableData = () => {
     if (DataProvider) {
       const tokens = await DataProvider.methods.getAllReservesTokens().call();
       setAssets(tokens);
-      
     }
   }, [DataProvider]);
 
@@ -27,7 +26,7 @@ const TableData = () => {
     getAssets();
   }, [getAssets]);
 
-  if (!active) return 'conecta tu wallet';
+  if (!active) return <AlertWallet />;
 
   return (
     <TableContainer>
