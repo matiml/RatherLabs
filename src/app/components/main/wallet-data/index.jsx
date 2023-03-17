@@ -14,7 +14,7 @@ const WalletData = ({ onOpen }) => {
 
   const connect = useCallback(async () => {
     activate(connector);
-    const rta = await fetch(`http://localhost:3005/users`, {
+    const rta = await fetch(`https://ratherlabsserver-production.up.railway.app/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
