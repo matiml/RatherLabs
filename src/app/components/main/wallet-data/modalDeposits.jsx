@@ -9,7 +9,7 @@ function ModalDeposits({ onClose, isOpen }) {
  
   const fetchDeposits = async () => {
     try {
-      const response = await fetch(`http://localhost:3005/deposits/${account}`);
+      const response = await fetch(`https://ratherlabsserver-production.up.railway.app/deposits/${account}`);
       const data = await response.json();
       setDeposits(data);
     
